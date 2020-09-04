@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python run_exp.py --config_file ./experiments/parameters_sbm_egcn_o.yaml

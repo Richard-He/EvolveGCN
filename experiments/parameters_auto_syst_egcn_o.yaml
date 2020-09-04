@@ -10,7 +10,7 @@ aut_sys_args:
 use_cuda: True
 use_logfile: True
 
-model: egcn_o
+model: lstmA
 
 task: link_pred
 

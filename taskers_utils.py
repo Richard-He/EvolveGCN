@@ -199,6 +199,9 @@ def get_non_existing_edges(adj,number, tot_nodes, smart_sampling, existing_nodes
     true_ids = get_edges_ids(idx,tot_nodes)
 
     true_ids = set(true_ids)
+    # print(idx)
+    # print(number)
+    # print(true_ids)
 
     #the maximum of edges would be all edges that don't exist between nodes that have edges
     num_edges = min(number,idx.shape[1] * (idx.shape[1]-1) - len(true_ids))
@@ -225,7 +228,6 @@ def get_non_existing_edges(adj,number, tot_nodes, smart_sampling, existing_nodes
             return edges
 
     edges = sample_edges(num_edges*4)
-
     edge_ids = edges[0] * tot_nodes + edges[1]
     
     out_ids = set()

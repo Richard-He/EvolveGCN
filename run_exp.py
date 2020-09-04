@@ -157,6 +157,12 @@ def build_gcn(args,tasker):
 			return egcn_h.EGCN(gcn_args, activation = torch.nn.RReLU(), device = args.device, skipfeats=True)
 		elif args.model == 'egcn_o':
 			return egcn_o.EGCN(gcn_args, activation = torch.nn.RReLU(), device = args.device)
+		elif args.model == 'gat':
+			return mls.Sp_GAT(gcn_args, activation = torch.nn.ELU()).to(args.device)
+		elif args.model == 'gatgruA':
+			return mls.Sp_GAT_GRU_A(gcn_args, activation = torch.nn.ELU()).to(args.device)
+		elif args.model == 'gatlstmA':
+			return mls.Sp_GAT_LSTM_A(gcn_args, activation = torch.nn.ELU()).to(args.device)
 		else:
 			raise NotImplementedError('need to finish modifying the models')
 

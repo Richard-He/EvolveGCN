@@ -8,10 +8,9 @@ uc_irc_args:
 
 
 use_cuda: True
-use_logfile: False
+use_logfile: True
 
-model: egcn_o
-
+model: gat
 task: link_pred
 
 class_weights: [ 0.1, 0.9]
@@ -27,16 +26,16 @@ steps_accum_gradients: 1
 learning_rate: 0.001
 learning_rate_min: 0.0005
 learning_rate_max: 0.1
-negative_mult_training: 50
+negative_mult_training: 100
 negative_mult_test: 100
 smart_neg_sampling: True
 seed: 1234
 target_measure: MAP # measure to define the best epoch F1, Precision, Recall, MRR, MAP
-target_class: 1 # Target class to get the measure to define the best epoch (all, 0, 1)
-early_stop_patience: 50
+target_class: all # Target class to get the measure to define the best epoch (all, 0, 1)
+early_stop_patience: 300
 
 eval_after_epochs: 5
-adj_mat_time_window: 1  # Time window to create the adj matrix for each timestep. Use None to use all the history (from 0 to t)
+adj_mat_time_window: 1 # Time window to create the adj matrix for each timestep. Use None to use all the history (from 0 to t)
 num_hist_steps: 10 # number of previous steps used for prediction
 num_hist_steps_min: 3 # only used if num_hist_steps: None
 num_hist_steps_max: 10 # only used if num_hist_steps: None

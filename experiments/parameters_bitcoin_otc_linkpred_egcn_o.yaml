@@ -10,7 +10,7 @@ bitcoinotc_args:
 use_cuda: True
 use_logfile: True
 
-model: egcn_o
+model: gat
 
 task: link_pred # link_pred edge_cls
 

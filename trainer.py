@@ -71,15 +71,11 @@ class Trainer():
 					epochs_without_impr+=1
 					if epochs_without_impr>self.args.early_stop_patience:
 						print ('### w'+str(self.args.rank)+') ep '+str(e)+' - Early stop.')
+						print ('best auc {}, best ap {}'.format(self.logger.best_auc, self.logger.best_ap))
 						break
 
-			if len(self.splitter.test)>0 and eval_valid==best_eval_valid and e>self.args.eval_after_epochs:
+			if len(self.splitter.test)>0 and e>self.args.eval_after_epochs and best_eval_valid == eval_valid:
 				eval_test, _ = self.run_epoch(self.splitter.test, e, 'TEST', grad = False)
-
-				if self.args.save_node_embeddings:
-					self.save_node_embs_csv(nodes_embs, self.splitter.train_idx, log_file+'_train_nodeembs.csv.gz')
-					self.save_node_embs_csv(nodes_embs, self.splitter.dev_idx, log_file+'_valid_nodeembs.csv.gz')
-					self.save_node_embs_csv(nodes_embs, self.splitter.test_idx, log_file+'_test_nodeembs.csv.gz')
 
 
 	def run_epoch(self, split, epoch, set_name, grad):

@@ -138,7 +138,7 @@ class Link_Pred_Tasker():
 		label_adj = tu.get_sp_adj(edges = self.data.edges, 
 								  time = idx+1,
 								  weighted = False,
-								  time_window =  self.args.adj_mat_time_window)
+								  time_window = self.args.adj_mat_time_window)
 		if test:
 			neg_mult = self.args.negative_mult_test
 		else:
