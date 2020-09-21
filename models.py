@@ -18,13 +18,13 @@ class Sp_GAT(torch.nn.Module):
             if i==0:
                 w_i = Parameter(torch.Tensor(size=(args.feats_per_node, args.layer_1_feats)))
                 a_i = Parameter(torch.Tensor(size=(1, args.layer_1_feats*2)))
-                u.reset_param(w_i)
-                u.reset_param(a_i)
+                nn.init.xavier_normal_(w_i, gain=1.414)
+                nn.init.xavier_normal_(a_i, gain=1.414)
             else:
                 w_i = Parameter(torch.Tensor(args.layer_1_feats, args.layer_2_feats))
                 a_i = Parameter(torch.Tensor(1, args.layer_1_feats*2))
-                u.reset_param(w_i)
-                u.reset_param(a_i)
+                nn.init.xavier_normal_(w_i, gain=1.414)
+                nn.init.xavier_normal_(a_i, gain=1.414)
             self.w_list.append(w_i)
             self.a_list.append(a_i)
             self.leakyrelu = nn.LeakyReLU()
